@@ -18,7 +18,7 @@
         sothree:umanoOverlay="true"
         sothree:umanoPanelHeight="0dp"
         sothree:umanoParallaxOffset="140dp"
-        sothree:umanoScrollableView="@+id/list"
+        sothree:umanoScrollableView="@+id/jobList"
         sothree:umanoShadowHeight="4dp">
 
 
@@ -67,48 +67,37 @@
         </FrameLayout>
 
         <LinearLayout
+            android:background="#fff"
             android:id="@+id/dragView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffffff"
             android:clickable="true"
             android:focusable="false"
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
-                    android:text="Hell0 Job"
-
+                    android:text="Job list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:text="Hell1 Job"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:text="Hell2 Job"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
+                    android:textColor="#000"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
                     android:textSize="24sp" />
 
             </LinearLayout>
+
+            <ListView
+                android:id="@+id/jobList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            </ListView>
 
         </LinearLayout>
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
