@@ -12,6 +12,10 @@
     tools:context="ekart.job_mint.JobCreatorActivity"
     tools:showIn="@layout/activity_job_creator">
 
+    <ListView
+        android:id="@+id/listview_admin_job_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></ListView>
     <Button
         android:id="@+id/post_job_btn"
         android:text="Post a Job"

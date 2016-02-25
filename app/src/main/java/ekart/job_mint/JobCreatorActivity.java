@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class JobCreatorActivity extends AppCompatActivity {
 
@@ -27,6 +28,9 @@ public class JobCreatorActivity extends AppCompatActivity {
             }
         });
 
+        ListView lv = (ListView) findViewById(R.id.listview_admin_job_list) ;
+
+        lv.setAdapter(new JobListAdapter(getApplicationContext(),Constants.jobModelList8HourAdmin));
 
         Button postJobButton = (Button) findViewById(R.id.post_job_btn);
         postJobButton.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +40,14 @@ public class JobCreatorActivity extends AppCompatActivity {
                 JobCreatorActivity.this.startActivity(i);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ListView lv = (ListView) findViewById(R.id.listview_admin_job_list) ;
+        lv.setAdapter(new JobListAdapter(getApplicationContext(),Constants.jobModelList8HourAdmin));
+
     }
 
 }

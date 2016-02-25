@@ -18,4 +18,9 @@ public class Constants {
         add(new JobModel("Blue Dart","adasd ads ad a s asd asssssss",new LatLng(12.9272542, 77.6327877)));
     }};
 
+    public static List<JobModel> jobModelList8HourAdmin = new ArrayList<JobModel>() {{
+        add(new JobModel("E-Kart","Delivery Boy for 8 hours",new LatLng(12.9272542, 77.6327877)));
+        add(new JobModel("E-Kart","Mother Hub Sorter",new LatLng(12.9272542, 77.6327877)));
+    }};
+
  }
