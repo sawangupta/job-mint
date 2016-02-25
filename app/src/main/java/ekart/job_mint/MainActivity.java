@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.constants.Style;
@@ -25,9 +26,10 @@ public class MainActivity extends AppCompatActivity
 
     private MapView mapView = null;
 
-    private View jobListView;
+    private View jobListViewContainer;
     private Button eightHourButton, fourHourButton, singleButton;
     private SlidingUpPanelLayout slidingPaneLayout;
+    private ListView jobList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,11 +81,13 @@ public class MainActivity extends AppCompatActivity
 
     private void init() {
         slidingPaneLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
-        jobListView = findViewById(R.id.dragView);
+        jobListViewContainer = findViewById(R.id.dragView);
+        jobList = (ListView)findViewById(R.id.jobList);
         eightHourButton = (Button) findViewById(R.id.eightHourButton);
         eightHourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                jobList.setAdapter(new JobListAdapter(getApplicationContext(),Constants.jobModelList8Hour));
                 slidingPaneLayout.setPanelHeight(getResources().getDimensionPixelSize(R.dimen.job_list_margin));
             }
         });
