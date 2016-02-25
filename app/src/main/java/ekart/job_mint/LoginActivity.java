@@ -186,7 +186,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             //showProgress(true);
-            Intent i = new Intent(this, MainActivity.class);
+            Intent i;
+            if(email.contains("sawan")) {
+                i = new Intent(this, JobCreatorActivity.class);
+            } else {
+                i = new Intent(this, MainActivity.class);
+            }
             this.startActivity(i);
             //mAuthTask = new UserLoginTask(email, password);
             //mAuthTask.execute((Void) null);

@@ -20,20 +20,30 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+
         <activity
             android:name=".MyJobActivity"
             android:label="@string/title_activity_my_job"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".CreateJob"
+            android:label="@string/title_activity_create_job"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".JobCreatorActivity"
+            android:label="@string/title_activity_job_creator"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
