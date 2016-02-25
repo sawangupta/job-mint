@@ -9,41 +9,108 @@
     tools:context="ekart.job_mint.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <com.mapbox.mapboxsdk.views.MapView
-        android:id="@+id/mapview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        mapbox:access_token="@string/mapboxtoken" />
-
-    <RelativeLayout
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#8b5c5454">
+        android:gravity="bottom"
+        sothree:umanoDragView="@+id/dragView"
+        sothree:umanoOverlay="true"
+        sothree:umanoPanelHeight="0dp"
+        sothree:umanoParallaxOffset="140dp"
+        sothree:umanoScrollableView="@+id/list"
+        sothree:umanoShadowHeight="4dp">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.mapbox.mapboxsdk.views.MapView
+                android:id="@+id/mapview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                mapbox:access_token="@string/mapboxtoken" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#8b5c5454">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/eightHourButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Get 8 hour job" />
+
+                    <Button
+                        android:id="@+id/fourHourButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Get 4 hour job" />
+
+                    <Button
+                        android:id="@+id/singleButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Get single delivery job" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </FrameLayout>
 
         <LinearLayout
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:layout_margin="16dp"
+            android:id="@+id/dragView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:clickable="true"
+            android:focusable="false"
+            android:orientation="vertical">
 
-            <Button
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Get 8 hour job" />
+                android:orientation="vertical">
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Get 4 hour job" />
+                <TextView
+                    android:text="Hell0 Job"
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Get single delivery job" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:text="Hell1 Job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:text="Hell2 Job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
         </LinearLayout>
-
-    </RelativeLayout>
-
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 </RelativeLayout>

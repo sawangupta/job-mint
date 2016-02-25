@@ -11,17 +11,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.constants.Style;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.views.MapView;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     private MapView mapView = null;
+
+    private View jobListView;
+    private Button eightHourButton, fourHourButton, singleButton;
+    private SlidingUpPanelLayout slidingPaneLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,10 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        init();
+
+
+
 
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.setStyleUrl(Style.MAPBOX_STREETS);
@@ -52,12 +62,11 @@ public class MainActivity extends AppCompatActivity
         mapView.setZoom(12);
         mapView.onCreate(savedInstanceState);
         mapView.setAccessToken(getString(R.string.mapboxtoken));
-        mapView.setZoomControlsEnabled(true);
+//        mapView.setZoomControlsEnabled(true);
         mapView.addMarker(new MarkerOptions()
                 .position(new LatLng(12.9272542, 77.6327877))
                 .title("Hello World!")
                 .snippet("Welcome to my marker."));
-
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +75,20 @@ public class MainActivity extends AppCompatActivity
                 mapView.setLatLng(new LatLng(12.9272542, 77.6327877), true);
             }
         });
+    }
+
+    private void init() {
+        slidingPaneLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
+        jobListView = findViewById(R.id.dragView);
+        eightHourButton = (Button) findViewById(R.id.eightHourButton);
+        eightHourButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slidingPaneLayout.setPanelHeight(getResources().getDimensionPixelSize(R.dimen.job_list_margin));
+            }
+        });
+        fourHourButton = (Button) findViewById(R.id.fourHourButton);
+        singleButton = (Button) findViewById(R.id.singleButton);
     }
 
     @Override
@@ -138,7 +161,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onPause()  {
+    public void onPause() {
         super.onPause();
         mapView.onPause();
     }
