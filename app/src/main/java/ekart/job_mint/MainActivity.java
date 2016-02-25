@@ -1,18 +1,24 @@
 package ekart.job_mint;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.constants.Style;
@@ -20,13 +26,15 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.views.MapView;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
+import ekart.job_mint.models.JobModel;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     private MapView mapView = null;
 
-    private View jobListViewContainer;
+    private View jobListViewContainer, buttonView;
     private Button eightHourButton, fourHourButton, singleButton;
     private SlidingUpPanelLayout slidingPaneLayout;
     private ListView jobList;
@@ -80,15 +88,41 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void init() {
+        buttonView = findViewById(R.id.buttonContainer);
         slidingPaneLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         jobListViewContainer = findViewById(R.id.dragView);
         jobList = (ListView)findViewById(R.id.jobList);
+        jobList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.myDialog))
+                        .setTitle("Apply at " + Constants.jobModelList8Hour.get(position).getCompanyName())
+                        .setMessage(Constants.jobModelList8Hour.get(position).getDescrp())
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Constants.myJobModelList8Hour.add(Constants.jobModelList8Hour.get(position));
+                                Toast.makeText(getApplicationContext(),"Job added successfully",Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .setCancelable(false)
+                        .show();
+            }
+        });
         eightHourButton = (Button) findViewById(R.id.eightHourButton);
         eightHourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonView.setVisibility(View.GONE);
                 jobList.setAdapter(new JobListAdapter(getApplicationContext(),Constants.jobModelList8Hour));
                 slidingPaneLayout.setPanelHeight(getResources().getDimensionPixelSize(R.dimen.job_list_margin));
+
+                for(JobModel jobModel : Constants.jobModelList8Hour) {
+                    mapView.addMarker(new MarkerOptions()
+                            .position(jobModel.getLatLng())
+                            .title(jobModel.getCompanyName())
+                            .snippet(jobModel.getDescrp()));
+                }
             }
         });
         fourHourButton = (Button) findViewById(R.id.fourHourButton);
@@ -133,18 +167,9 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_gallery) {
+            Intent intent = new Intent(this, MyJobActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

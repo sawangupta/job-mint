@@ -14,8 +14,10 @@ public class Constants {
 
     public static List<JobModel> jobModelList8Hour = new ArrayList<JobModel>() {{
         add(new JobModel("Ekart","adasd ads ad a s asd asssssss",new LatLng(12.9272542, 77.6327877)));
-        add(new JobModel("Swiggy","adasd ads ad a s asd asssssss",new LatLng(12.9272542, 77.6327877)));
-        add(new JobModel("Blue Dart","adasd ads ad a s asd asssssss",new LatLng(12.9272542, 77.6327877)));
+        add(new JobModel("Swiggy","adasd ads ad a s asd asssssss",new LatLng(12.941844, 77.617249)));
+        add(new JobModel("Blue Dart","adasd ads ad a s asd asssssss",new LatLng(12.933805, 77.632291)));
     }};
+
+    public static List<JobModel> myJobModelList8Hour = new ArrayList<JobModel>();
 
  }

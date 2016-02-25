@@ -28,4 +28,6 @@ dependencies {
         transitive=true
     }
     compile 'com.sothree.slidinguppanel:library:3.2.1'
+    compile 'com.mikhaellopez:circularfillableloaders:1.2.0'
+    compile 'com.larswerkman:lobsterpicker:1.0.0'
 }

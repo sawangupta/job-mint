@@ -20,4 +20,5 @@
         completions."
     </string>
     <string name="mapboxtoken">pk.eyJ1IjoiYWFnYW05NCIsImEiOiJjaWwwdzY2OWQyOTl3dWFtMzllb3Zzd2syIn0.cxvxJFqmtl3fK6eAo3HOag</string>
+    <string name="title_activity_my_job">MyJobActivity</string>
 </resources>

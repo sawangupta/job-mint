@@ -33,6 +33,7 @@
                 mapbox:access_token="@string/mapboxtoken" />
 
             <RelativeLayout
+                android:id="@+id/buttonContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#8b5c5454">
